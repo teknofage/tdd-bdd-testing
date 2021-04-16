@@ -60,6 +60,15 @@ const getNumItemsInCart = () => {
   return shoppingCart.length
 }
 
+const totalCostItemsInCart = (getShoppingCart) => {
+  // should return the total cost of items in the cart
+  let total_cost_cart = 0;
+  items.forEach(function(value, index, array) {
+    total_cost_cart += value.price;
+  })
+  return total_cost_cart
+}
+
 const removeItemFromCart = (item) => {
   // should remove item from shopping cart
   ind = shoppingCart.indexOf(item)

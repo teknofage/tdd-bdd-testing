@@ -51,6 +51,7 @@ it('Should return the area of a circle with a radius', function() {
   expect(circ_area).to.equal((3*Math.PI)^2);
 });
 
+// it('Should return the number of items in the cart')
 it('Should return the number of items in the cart', function() {
   const circ_area = utils.circleArea(3);
   expect(circ_area).to.be.an("Number");
@@ -58,6 +59,7 @@ it('Should return the number of items in the cart', function() {
   expect(circ_area).to.equal((3*Math.PI)^2);
 });
 
+// it('Should return null if any of the measurements are negative')
 it('Should return null if any of the measurements are negative', function() {
   const circ_area = utils.circleArea(3);
   expect(circ_area).to.be.an("Number");
@@ -81,6 +83,7 @@ beforeEach((done) => {
   done()
 })
 
+// it("Should create a new (object) Item with name and price")
 it("Should create a new (object) Item with name and price", function() {
   const item = utils.createItem("apple", 0.99);
   expect(item).to.be.a("object");
@@ -116,8 +119,8 @@ it("Should remove items from cart", function() {
   utils.addItemToCart(utils.createItem("Apple", 0.99));
   utils.addItemToCart(utils.createItem("Banana", 1.31));
   utils.addItemToCart(utils.createItem("Jackie Chan", 3));
-  expect(utils.getNumItemsInCart()).to.equal(3)
-  utils.removeItemFromCart("Apple")
+  expect(utils.getNumItemsInCart()).to.equal(3);
+  utils.removeItemFromCart("Apple");
   expect(utils.getNumItemsInCart()).to.equal(2)
 })
 
@@ -125,8 +128,23 @@ it("Should remove items from cart", function() {
 // Stretch Challenges
 // ========================================================
 
-it("Should update the count of items in the cart")
+it("Should update the count of items in the cart", function() {
+  expect(utils.getNumItemsInCart()).to.equal(0);
+  utils.addItemToCart(utils.createItem("Apple", 0.99));
+  utils.addItemToCart(utils.createItem("Banana", 1.31));
+  utils.addItemToCart(utils.createItem("Jackie Chan", 3));
+  utils.removeItemFromCart("Apple")
+  expect(utils.getNumItemsInCart()).to.equal(2)
+})
 
-it("Should validate that an empty cart has 0 items")
+it("Should validate that an empty cart has 0 items", function() {
+  utils.clearCart();
+  expect(utils.getNumItemsInCart()).to.equal(0)
+})
 
-it("Should return the total cost of all items in the cart")
+it("Should return the total cost of all items in the cart", function() {
+  utils.addItemToCart(utils.createItem("Apple", 0.99));
+  utils.addItemToCart(utils.createItem("Banana", 1.31));
+  utils.addItemToCart(utils.createItem("Jackie Chan", 3));
+  expect(utils.totalCostItemsInCart()).to.equal(5.30)
+})
