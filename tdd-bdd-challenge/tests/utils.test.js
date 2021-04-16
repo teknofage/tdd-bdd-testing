@@ -26,6 +26,45 @@ it("should say hello", function() {
 // This is called "Red-Green-Refactor"
 // ========================================================
 
+// it('Should return.the area of a rectangle given width and height');
+it("should return the area of a rectangle", function() {
+  const rect_area = utils.area(3,5);
+  expect(rect_area).to.be.an("Number");
+  expect(rect_area).to.be.above(0);
+  expect(rect_area).to.equal(15);
+});
+
+// it('Should return the perimeter of a rectangle given width and height');
+it("Should return the perimeter of a rectangle", function() {
+  const rect_peri = utils.perimeter(3,5);
+  expect(rect_peri).to.be.an("Number");
+  expect(rect_peri).to.be.above(0);
+  expect(rect_peri).to.equal(16);
+});
+
+
+// it('Should return the area of a circle with a radius');
+it('Should return the area of a circle with a radius', function() {
+  const circ_area = utils.circleArea(3);
+  expect(circ_area).to.be.an("Number");
+  expect(circ_area).to.be.above(0);
+  expect(circ_area).to.equal((3*Math.PI)^2);
+});
+
+it('Should return the number of items in the cart', function() {
+  const circ_area = utils.circleArea(3);
+  expect(circ_area).to.be.an("Number");
+  expect(circ_area).to.be.above(0);
+  expect(circ_area).to.equal((3*Math.PI)^2);
+});
+
+it('Should return null if any of the measurements are negative', function() {
+  const circ_area = utils.circleArea(3);
+  expect(circ_area).to.be.an("Number");
+  expect(circ_area).to.be.above(0);
+  expect(circ_area).to.equal((3*Math.PI)^2);
+});
+
 
 
 
@@ -43,20 +82,38 @@ beforeEach((done) => {
 })
 
 it("Should create a new (object) Item with name and price", function() {
-  const item = utils.createItem("apple", 0.99)
-  expect(item).to.be.a("object")
-  expect(item).to.have.property("name", "apple")
-  expect(item).to.have.property("price", 0.99)
-  expect(item).to.have.property("quantity", 1)
+  const item = utils.createItem("apple", 0.99);
+  expect(item).to.be.a("object");
+  expect(item).to.have.property("name", "apple");
+  expect(item).to.have.property("price", 0.99);
+  expect(item).to.have.property("quantity", 1);
 })
 
-it("Should return an array containing all items in cart")
+it("Should return an array containing all items in cart", function() {
+  expect(utils.getNumItemsInCart()).to.equal(0)
+  utils.addItemToCart(utils.createItem("Apple", 0.99));
+  utils.addItemToCart(utils.createItem("Banana", 1.31));
+  utils.addItemToCart(utils.createItem("Jackie Chan", 3));
+  expect(utils.getNumItemsInCart()).to.equal(3)
+})
 
-it("Should add a new item to the shopping cart")
+it("Should add a new item to the shopping cart", function() {
+  utils.addItemToCart(utils.createItem("Apple", 0.99));
+  utils.addItemToCart(utils.createItem("Banana", 1.31));
+  utils.addItemToCart(utils.createItem("Jackie Chan", 3));
+  expect(utils.getNumItemsInCart()).to.equal(3)
+})
 
 it("Should return the number of items in the cart")
 
-it("Should remove items from cart")
+it("Should remove items from cart", function() {
+  utils.addItemToCart(utils.createItem("Apple", 0.99));
+  utils.addItemToCart(utils.createItem("Banana", 1.31));
+  utils.addItemToCart(utils.createItem("Jackie Chan", 3));
+  expect(utils.getNumItemsInCart()).to.equal(3)
+  utils.removeItemFromCart("Apple")
+  expect(utils.getNumItemsInCart()).to.equal(2)
+})
 
 // ========================================================
 // Stretch Challenges
