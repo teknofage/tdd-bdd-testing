@@ -104,7 +104,13 @@ it("Should add a new item to the shopping cart", function() {
   expect(utils.getNumItemsInCart()).to.equal(3)
 })
 
-it("Should return the number of items in the cart")
+it("Should return the number of items in the cart", function() {
+  expect(utils.getNumItemsInCart()).to.equal(0)
+  utils.addItemToCart(utils.createItem("Apple", 0.99));
+  utils.addItemToCart(utils.createItem("Banana", 1.31));
+  utils.addItemToCart(utils.createItem("Jackie Chan", 3));
+  expect(utils.getNumItemsInCart()).to.equal(3)
+})
 
 it("Should remove items from cart", function() {
   utils.addItemToCart(utils.createItem("Apple", 0.99));
