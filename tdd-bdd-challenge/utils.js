@@ -63,7 +63,7 @@ const getNumItemsInCart = () => {
 const removeItemFromCart = (item) => {
   // should remove item from shopping cart
   ind = shoppingCart.indexOf(item)
-  delete shoppingCart[ind]
+  shoppingCart.splice(ind)
   return shoppingCart
 }
 
